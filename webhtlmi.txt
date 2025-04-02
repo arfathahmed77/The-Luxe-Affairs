@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Luxe Affairs | Luxury Event Planning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern & Luxurious CSS */
+        :root {
+            --gold: #d4af37;
+            --black: #000000;
+            --white: #ffffff;
+            --light-bg: #f9f5f0;
+            --dark-gray: #111111;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            background: var(--light-bg);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--black);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav {
+            background: var(--dark-gray);
+            padding: 15px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin: 20px auto;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+        
+        .btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            background: var(--white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="logo">THE LUXE <span>AFFAIRS</span></div>
+    </header>
+    <nav>
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Crafting Unforgettable Moments</h1>
+            <p>Elevate your events with bespoke planning tailored to your vision.</p>
+            <a href="#contact" class="btn">Enquire Now</a>
+        </div>
+    </section>
+    
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ring"></i>
+                </div>
+                <h3>Weddings</h3>
+                <p>Breathtaking weddings tailored to your unique love story with impeccable attention to detail.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Corporate Events</h3>
+                <p>Professional events that impress, from product launches to executive retreats.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <h3>Luxury Parties</h3>
+                <p>Unforgettable celebrations that reflect your personal style and sophistication.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event 6">
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p>The Luxe Affairs is a premier event planning company specializing in creating extraordinary experiences for discerning clients. With our meticulous attention to detail and unparalleled creativity, we transform visions into reality.</p>
+            <p>Our team of seasoned professionals brings years of expertise in luxury event design and execution, ensuring every occasion is flawless and memorable.</p>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <input type="text" id="event-type">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="logo" style="color: var(--white); margin-bottom: 20px;">THE LUXE <span>AFFAIRS</span></div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 The Luxe Affairs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple form submission handling
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your inquiry! We will contact you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
